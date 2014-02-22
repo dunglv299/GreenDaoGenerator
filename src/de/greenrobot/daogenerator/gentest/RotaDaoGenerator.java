@@ -45,6 +45,7 @@ public class RotaDaoGenerator {
 		rota.addStringProperty("color");
 		rota.addIntProperty("weekReapeat");
 		rota.addStringProperty("timeRepeat");
+		rota.addIntProperty("reminderTime");
 
 		Entity weekTime = schema.addEntity("WeekTime");
 		// weekTime.setTableName("WeekTime"); // "ORDER" is a reserved keyword
