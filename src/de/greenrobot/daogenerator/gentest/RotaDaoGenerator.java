@@ -19,7 +19,6 @@ import de.greenrobot.daogenerator.DaoGenerator;
 import de.greenrobot.daogenerator.Entity;
 import de.greenrobot.daogenerator.Property;
 import de.greenrobot.daogenerator.Schema;
-import de.greenrobot.daogenerator.ToMany;
 
 /**
  * Generates entities and DAOs for the example project DaoExample.
@@ -46,23 +45,21 @@ public class RotaDaoGenerator {
 		rota.addIntProperty("weekReapeat");
 		rota.addStringProperty("timeRepeat");
 		rota.addIntProperty("reminderTime");
+		rota.addBooleanProperty("isGoogleSync");
+		rota.addStringProperty("calendarUri");
 
-		Entity weekTime = schema.addEntity("WeekTime");
-		// weekTime.setTableName("WeekTime"); // "ORDER" is a reserved keyword
-		weekTime.addIdProperty();
-		weekTime.addIntProperty("weekId");
-		Property rotaId = weekTime.addLongProperty("rotaId").notNull()
+		Entity dayTime = schema.addEntity("DayTime");
+		dayTime.addIdProperty();
+		dayTime.addIntProperty("dayId");
+		Property rotaId = dayTime.addLongProperty("rotaId").notNull()
 				.getProperty();
 		// Add weekday
-		weekTime.addStringProperty("monday");
-		weekTime.addStringProperty("tuesday");
-		weekTime.addStringProperty("wednesday");
-		weekTime.addStringProperty("thursday");
-		weekTime.addStringProperty("friday");
-		weekTime.addStringProperty("saturday");
-		weekTime.addStringProperty("sunday");
+		dayTime.addLongProperty("startTime");
+		dayTime.addLongProperty("endTime");
+		dayTime.addDoubleProperty("hourWorking");
+		dayTime.addBooleanProperty("isSyncGoogle");
 
-		weekTime.addToOne(rota, rotaId);
-		rota.addToMany(weekTime, rotaId);
+		dayTime.addToOne(rota, rotaId);
+		rota.addToMany(dayTime, rotaId);
 	}
 }
