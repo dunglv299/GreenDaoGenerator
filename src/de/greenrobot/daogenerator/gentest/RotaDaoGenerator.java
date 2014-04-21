@@ -22,44 +22,51 @@ import de.greenrobot.daogenerator.Schema;
 
 /**
  * Generates entities and DAOs for the example project DaoExample.
- * 
+ * <p/>
  * Run it as a Java application (not Android).
- * 
+ *
  * @author Markus
  */
 public class RotaDaoGenerator {
 
-	public static void main(String[] args) throws Exception {
-		Schema schema = new Schema(1, "com.dunglv.calendar.dao");
-		addNote(schema);
+    public static void main(String[] args) throws Exception {
+        Schema schema = new Schema(1, "com.dunglv.calendar.dao");
+        addNote(schema);
 
-		new DaoGenerator().generateAll(schema, "../Caldroid/src");
-	}
+        new DaoGenerator().generateAll(schema, "../Caldroid/src");
+    }
 
-	private static void addNote(Schema schema) {
-		Entity rota = schema.addEntity("Rota");
-		rota.addIdProperty().autoincrement().primaryKey();
-		rota.addStringProperty("name");
-		rota.addLongProperty("dateStarted");
-		rota.addStringProperty("color");
-		rota.addIntProperty("weekReapeat");
-		rota.addStringProperty("timeRepeat");
-		rota.addIntProperty("reminderTime");
-		rota.addBooleanProperty("isGoogleSync");
-		rota.addStringProperty("calendarUri");
+    private static void addNote(Schema schema) {
+        Entity rota = schema.addEntity("Rota");
+        rota.addIdProperty().autoincrement().primaryKey();
+        rota.addStringProperty("name");
+        rota.addLongProperty("dateStarted");
+        rota.addStringProperty("color");
+        rota.addIntProperty("weekReapeat");
+        rota.addStringProperty("timeRepeat");
+        rota.addIntProperty("reminderTime");
+        rota.addBooleanProperty("isGoogleSync");
+        rota.addStringProperty("calendarUri");
 
-		Entity dayTime = schema.addEntity("DayTime");
-		dayTime.addIdProperty();
-		dayTime.addIntProperty("dayId");
-		Property rotaId = dayTime.addLongProperty("rotaId").notNull()
-				.getProperty();
-		// Add weekday
-		dayTime.addLongProperty("startTime");
-		dayTime.addLongProperty("endTime");
-		dayTime.addDoubleProperty("hourWorking");
-		dayTime.addBooleanProperty("isSyncGoogle");
+        Entity dayTime = schema.addEntity("DayTime");
+        dayTime.addIdProperty();
+        dayTime.addIntProperty("dayId");
+        Property rotaId = dayTime.addLongProperty("rotaId").notNull()
+                .getProperty();
+        // Add weekday
+        dayTime.addLongProperty("startTime");
+        dayTime.addLongProperty("endTime");
+        dayTime.addDoubleProperty("hourWorking");
+        dayTime.addBooleanProperty("isSyncGoogle");
 
-		dayTime.addToOne(rota, rotaId);
-		rota.addToMany(dayTime, rotaId);
-	}
+        dayTime.addToOne(rota, rotaId);
+        rota.addToMany(dayTime, rotaId);
+
+        // Sick table
+        Entity dayOff = schema.addEntity("DayOff");
+        dayOff.addIdProperty();
+        dayOff.addLongProperty("dayOfTime");
+        dayOff.addIntProperty("offType");
+
+    }
 }
