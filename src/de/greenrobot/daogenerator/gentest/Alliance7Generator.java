@@ -26,21 +26,23 @@ import de.greenrobot.daogenerator.Schema;
  *
  * @author Markus
  */
-public class LonoGenerator {
+public class Alliance7Generator {
 
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(1, "com.teusoft.lono.dao");
+        Schema schema = new Schema(1, "com.dp.alliance7.dao");
         addNote(schema);
-        new DaoGenerator().generateAll(schema, "../Lono/src");
+        new DaoGenerator().generateAll(schema, "../Alliance 7/Alliance 7/src");
     }
 
     private static void addNote(Schema schema) {
-        Entity lono = schema.addEntity("Lono");
-        lono.addIdProperty().autoincrement().primaryKey();
-        lono.addIntProperty("temperature");
-        lono.addIntProperty("humidity");
-        lono.addLongProperty("timeStamp");
-        lono.addIntProperty("channel");
-        lono.addIntProperty("index");
+        Entity article = schema.addEntity("Article");
+        article.addLongProperty("ArticleId").primaryKey();
+        article.addIntProperty("CategoryId");
+        article.addStringProperty("Label");
+        article.addStringProperty("Summary");
+        article.addStringProperty("Body");
+        article.addStringProperty("PublishTime");
+        article.addStringProperty("EndTime");
+        article.addStringProperty("Createtime");
     }
 }
