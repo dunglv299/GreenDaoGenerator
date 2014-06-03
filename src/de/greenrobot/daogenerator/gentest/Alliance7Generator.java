@@ -38,11 +38,33 @@ public class Alliance7Generator {
         Entity article = schema.addEntity("Article");
         article.addLongProperty("ArticleId").primaryKey();
         article.addIntProperty("CategoryId");
+        article.addIntProperty("MyCategoryId");
         article.addStringProperty("Label");
         article.addStringProperty("Summary");
         article.addStringProperty("Body");
         article.addStringProperty("PublishTime");
         article.addStringProperty("EndTime");
         article.addStringProperty("Createtime");
+
+        Entity document = schema.addEntity("Document");
+        document.addLongProperty("DocumentId").primaryKey();
+        document.addLongProperty("ArticleId");
+        document.addStringProperty("Label");
+        document.addStringProperty("Url");
+        document.addIntProperty("Size");
+        document.addStringProperty("Extension");
+        document.addStringProperty("ExtensionType");
+        document.addStringProperty("Type");
+        document.addStringProperty("CreateTime");
+        document.addBooleanProperty("IsDownloaded");
+
+        // Alert
+        Entity alert = schema.addEntity("Alert");
+        alert.addLongProperty("NotificationId").primaryKey();
+        alert.addStringProperty("Title");
+        alert.addStringProperty("Details");
+        alert.addIntProperty("Level");
+        alert.addStringProperty("CreateTime");
+
     }
 }
