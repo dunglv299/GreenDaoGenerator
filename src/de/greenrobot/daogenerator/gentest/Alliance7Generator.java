@@ -65,6 +65,7 @@ public class Alliance7Generator {
         alert.addStringProperty("Details");
         alert.addIntProperty("Level");
         alert.addStringProperty("CreateTime");
+        alert.addBooleanProperty("IsDeleted");
 
     }
 }
