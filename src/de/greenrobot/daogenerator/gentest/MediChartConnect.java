@@ -49,5 +49,25 @@ public class MediChartConnect {
         Entity diagnosis = schema.addEntity("Diagnosis");
         diagnosis.addIdProperty().autoincrement().primaryKey();
         diagnosis.addStringProperty("diagnosis");
+
+        Entity doctor = schema.addEntity("Doctor");
+        doctor.addIdProperty().autoincrement().primaryKey();
+        doctor.addStringProperty("clinicAndAddress");
+        doctor.addStringProperty("name");
+        doctor.addStringProperty("type");
+        doctor.addStringProperty("phone");
+
+        Entity insurance = schema.addEntity("Insurance");
+        insurance.addIdProperty().autoincrement().primaryKey();
+        insurance.addStringProperty("type");
+        insurance.addStringProperty("vision");
+        insurance.addStringProperty("dental");
+        insurance.addStringProperty("prescription");
+
+        Entity note = schema.addEntity("Note");
+        note.addIdProperty().autoincrement().primaryKey();
+        note.addLongProperty("timeStamp");
+        note.addStringProperty("content");
+
     }
 }
