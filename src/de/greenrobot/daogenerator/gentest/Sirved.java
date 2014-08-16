@@ -39,14 +39,10 @@ public class Sirved {
         entity.addIdProperty().autoincrement().primaryKey();
         entity.addStringProperty("name");
         entity.addLongProperty("category_id");
-        entity.addStringProperty("content");
         entity.addStringProperty("price");
-        entity.addBooleanProperty("active");
-        entity.addStringProperty("image");
-        entity.addStringProperty("image_dir");
-        entity.addBooleanProperty("over");
         entity.addStringProperty("thumb_path");
         entity.addStringProperty("image_path");
+        entity.addStringProperty("content");
 
     }
 }

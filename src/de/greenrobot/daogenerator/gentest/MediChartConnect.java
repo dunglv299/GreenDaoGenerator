@@ -59,15 +59,21 @@ public class MediChartConnect {
 
         Entity insurance = schema.addEntity("Insurance");
         insurance.addIdProperty().autoincrement().primaryKey();
-        insurance.addStringProperty("type");
-        insurance.addStringProperty("vision");
-        insurance.addStringProperty("dental");
-        insurance.addStringProperty("prescription");
+        insurance.addStringProperty("insuranceName");
+        insurance.addStringProperty("healthPlan");
+        insurance.addStringProperty("memberId");
+        insurance.addStringProperty("group");
+        insurance.addStringProperty("employerName");
+        insurance.addStringProperty("memberName");
+        insurance.addStringProperty("dependentName");
+        insurance.addStringProperty("typePlan");
+
 
         Entity note = schema.addEntity("Note");
         note.addIdProperty().autoincrement().primaryKey();
         note.addLongProperty("timeStamp");
         note.addStringProperty("content");
+        note.addIntProperty("painLevel");
 
     }
 }
