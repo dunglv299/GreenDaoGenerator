@@ -35,14 +35,17 @@ public class Sirved {
     }
 
     private static void addItem(Schema schema) {
-        Entity entity = schema.addEntity("Food");
-        entity.addIdProperty().autoincrement().primaryKey();
-        entity.addStringProperty("name");
-        entity.addLongProperty("category_id");
-        entity.addStringProperty("price");
-        entity.addStringProperty("thumb_path");
-        entity.addStringProperty("image_path");
-        entity.addStringProperty("content");
+        Entity food = schema.addEntity("Food");
+        food.addIdProperty().autoincrement().primaryKey();
+        food.addStringProperty("name");
+        food.addLongProperty("category_id");
+        food.addStringProperty("price");
+        food.addStringProperty("thumb_path");
+        food.addStringProperty("image_path");
+        food.addStringProperty("content");
 
+        Entity order = schema.addEntity("FoodOrder");
+        order.addLongProperty("food_id").primaryKey();
+        order.addIntProperty("quantity");
     }
 }
