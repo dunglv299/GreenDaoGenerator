@@ -45,7 +45,8 @@ public class Sirved {
         food.addStringProperty("content");
 
         Entity order = schema.addEntity("FoodOrder");
-        order.addLongProperty("food_id").primaryKey();
+        order.addLongProperty("foodId").primaryKey();
         order.addIntProperty("quantity");
+        order.addStringProperty("type");
     }
 }
