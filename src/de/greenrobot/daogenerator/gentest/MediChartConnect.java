@@ -74,6 +74,10 @@ public class MediChartConnect {
         note.addLongProperty("timeStamp");
         note.addStringProperty("content");
         note.addIntProperty("painLevel");
-
+        // Table image for note
+        Entity noteImage = schema.addEntity("NoteImage");
+        noteImage.addIdProperty().autoincrement().primaryKey();
+        noteImage.addStringProperty("imagePath");
+        noteImage.addLongProperty("noteId");
     }
 }
