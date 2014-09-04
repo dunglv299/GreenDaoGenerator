@@ -45,9 +45,26 @@ public class Sirved {
         food.addStringProperty("content");
 
         Entity order = schema.addEntity("FoodOrder");
-        order.addLongProperty("item_id").primaryKey();
+        order.addIdProperty().autoincrement().primaryKey();
+        order.addLongProperty("item_id");
         order.addIntProperty("quantity");
         order.addStringProperty("options");
         order.addLongProperty("stadiumId");
+
+        Entity foodOptions = schema.addEntity("FoodOption");
+        foodOptions.addIdProperty().autoincrement().primaryKey();
+        foodOptions.addLongProperty("food_id");
+        foodOptions.addStringProperty("price");
+        foodOptions.addStringProperty("name");
+
+        // ShopProduct
+        Entity accessories = schema.addEntity("Accessory");
+        accessories.addIdProperty().autoincrement().primaryKey();
+        accessories.addStringProperty("name");
+        accessories.addLongProperty("category_id");
+        accessories.addStringProperty("price");
+        accessories.addStringProperty("thumb_path");
+        accessories.addStringProperty("image_path");
+
     }
 }

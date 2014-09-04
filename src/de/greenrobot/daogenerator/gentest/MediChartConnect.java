@@ -78,6 +78,7 @@ public class MediChartConnect {
         Entity noteImage = schema.addEntity("NoteImage");
         noteImage.addIdProperty().autoincrement().primaryKey();
         noteImage.addStringProperty("imagePath");
+        noteImage.addStringProperty("imageThumb");
         noteImage.addLongProperty("noteId");
     }
 }
